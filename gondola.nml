@@ -1,0 +1,879 @@
+grf {
+	grfid					: "JV\52\01";
+	name					: string(STR_GRF_NAME);
+	desc					: string(STR_GRF_DESCRIPTION);
+	url						: string(STR_GRF_URL);
+	version					: 0;
+	min_compatible_version	: 0;
+}
+
+//overlay
+
+spriteset(overlay1, "gfx/overlay.png") {
+    [   1,    1,       64,    31,     -31,        0]
+    [  66,    1,       64,    31,     -31,        0]
+    [ 131,    1,       64,    31,     -31,        0]
+    [ 196,    1,       64,    31,     -31,        0]
+    [ 261,    1,       64,    31,     -31,        0]
+    [ 326,    1,       64,    31,     -31,        0]
+	//Slopes
+    [ 391,    1,       64,    38,     -31,       -8]
+    [ 456,    1,       64,    22,     -31,        0]
+    [ 521,    1,       64,    22,     -31,        0]
+    [ 586,    1,       64,    38,     -31,        0]
+}
+
+spriteset(overlay2, "gfx/overlay_snow.png") {
+    [   1,    1,       64,    31,     -31,        0]
+    [  66,    1,       64,    31,     -31,        0]
+    [ 131,    1,       64,    31,     -31,        0]
+    [ 196,    1,       64,    31,     -31,        0]
+    [ 261,    1,       64,    31,     -31,        0]
+    [ 326,    1,       64,    31,     -31,        0]
+	//Slopes
+    [ 391,    1,       64,    38,     -31,       -8]
+    [ 456,    1,       64,    22,     -31,        0]
+    [ 521,    1,       64,    22,     -31,        0]
+    [ 586,    1,       64,    38,     -31,        0]
+}
+
+switch (FEAT_RAILTYPES, SELF, track_overlay, terrain_type) {
+  TILETYPE_SNOW: overlay2;
+  overlay1;
+}
+
+//underlay
+
+spriteset(underlay1, "gfx/underlay.png") {
+    [   1,    1,       64,    31,     -31,         0]
+    [  66,    1,       64,    31,     -31,         0]
+    [ 131,    1,       64,    31,     -31,         0]
+    [ 196,    1,       64,    31,     -31,         0]
+    [ 261,    1,       64,    31,     -31,         0]
+    [ 326,    1,       64,    31,     -31,         0]
+	//Slopes
+    [ 391,    1,       64,    38,     -31,        -8]
+    [ 456,    1,       64,    22,     -31,         0]
+    [ 521,    1,       64,    22,     -31,         0]
+    [ 586,    1,       64,    38,     -31,        -8]
+    [ 586,    1,       64,    38,     -31,        -8]
+	//Crossing
+    [   1,   49,       64,    31,     -31,         0]
+    //Ground for switches
+    [  66,   49,       64,    31,     -31,         0]
+    [ 131,   49,       64,    31,     -31,         0]
+    [ 196,   49,       64,    31,     -31,         0]
+    [ 261,   49,       64,    31,     -31,         0]
+    [ 326,   49,       64,    31,     -31,         0]
+}
+
+spriteset(underlay2, "gfx/underlay_snow.png") {
+    [   1,    1,       64,    31,     -31,         0]
+    [  66,    1,       64,    31,     -31,         0]
+    [ 131,    1,       64,    31,     -31,         0]
+    [ 196,    1,       64,    31,     -31,         0]
+    [ 261,    1,       64,    31,     -31,         0]
+    [ 326,    1,       64,    31,     -31,         0]
+	//Slopes
+    [ 391,    1,       64,    38,     -31,        -8]
+    [ 456,    1,       64,    22,     -31,         0]
+    [ 521,    1,       64,    22,     -31,         0]
+    [ 586,    1,       64,    38,     -31,        -8]
+    [ 586,    1,       64,    38,     -31,        -8]
+	//Crossing
+    [   1,   49,       64,    31,     -31,         0]
+    //Ground for switches
+    [  66,   49,       64,    31,     -31,         0]
+    [ 131,   49,       64,    31,     -31,         0]
+    [ 196,   49,       64,    31,     -31,         0]
+    [ 261,   49,       64,    31,     -31,         0]
+    [ 326,   49,       64,    31,     -31,         0]
+}
+
+switch (FEAT_RAILTYPES, SELF, track_underlay, terrain_type) {
+  TILETYPE_SNOW: underlay2;
+  underlay1;
+}
+
+//*Tunnels
+
+template tmpl_tunnel_overlaytracks() {
+	//left_x, upper_y, width, height, offset_x, offset_y 
+ [ 10, 50, 64, 64, -31, -33]
+ [158, 50, 64, 64, -31, -33]
+ [306, 50, 64, 64, -31, -33]
+ [454, 50, 64, 64, -31, -33]
+ }
+
+ template tmpl_tunnel_overlays() {
+	//left_x, upper_y, width, height, offset_x, offset_y 
+ [ 84, 50, 64, 64, -31, -63]
+ [232, 50, 64, 64, -31, -63]
+ [380, 50, 64, 64, -31, -63]
+ [528, 50, 64, 64, -31, -63]
+}
+
+/*
+//Remove trackless tunnelgraphics from OpenGFX-extra
+replacenew (RAILTYPE_TUNNELS, "gfx/notracklesstunnels.png") { 
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+} 
+*/
+
+spriteset(tunnel_tracks, "gfx/tunnel.png") {
+ tmpl_tunnel_overlaytracks()
+}
+
+spriteset(tunnel_overlay, "gfx/tunnel.png") {
+ tmpl_tunnel_overlays()
+}
+spriteset(tunnel_overlay_snow, "gfx/tunnel_snow.png") {
+ tmpl_tunnel_overlays()
+}
+
+
+switch(FEAT_RAILTYPES, SELF, tunnel_overlay_switch, terrain_type) {
+ TILETYPE_SNOW: tunnel_overlay_snow;
+ tunnel_overlay;
+}
+
+//*tracks on bridges
+
+spriteset(bridge_tracks, "gfx/bridgetrack.png") {
+	[   1,    1,       64,    31,       -31,        0]
+	[  66,    1,       64,    31,       -31,        0]
+	//Slopes
+	[ 131,    1,       64,    39,       -31,       -8]
+	[ 196,    1,       64,    23,       -31,        0]
+	[ 261,    1,       64,    23,       -31,        0]
+	[ 326,    1,       64,    39,       -31,       -8]
+}
+
+//*Fences
+
+spriteset(spriteset_nofences, "gfx/nofences.png") {
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+	[  0,0,1,1,0,0]
+}
+
+//*Gui
+
+spriteset(gui, "gfx/gui.png") {
+ [ 0, 0, 20, 20, 0, 0]
+ [ 25, 0, 20, 20, 0, 0]
+ [ 50, 0, 20, 20, 0, 0]
+ [ 75, 0, 20, 20, 0, 0]
+ [100, 0, 20, 20, 0, 0]
+ [125, 0, 20, 20, 0, 0]
+ [150, 0, 20, 20, 0, 0]
+ [175, 0, 20, 20, 0, 0]
+ [200, 0, 32, 32, 0, 0]
+ [250, 0, 32, 32, 0, 0]
+ [300, 0, 32, 32, 0, 0]
+ [350, 0, 32, 32, 0, 0]
+ [400, 0, 32, 32, 0, 0]
+ [450, 0, 32, 32, 0, 0]
+ [500, 0, 32, 32, 0, 0]
+ [550, 0, 32, 32, 0, 0]
+}
+
+//*Depot
+
+spriteset(depot, "gfx/depot.png") {
+  [   42, 85, 	24, 28, 	 9 , -12]   
+  [    2, 24, 	64, 58,	  	-9 , -42] 
+  [   82, 85, 	24, 28,	 	-31, -12] 
+  [   82, 24, 	64, 58,	 	-53, -42]
+  [  242, 24, 	64, 58, 	-53, -42]
+  [  162, 24, 	64, 58,  	-9 , -42] 
+}
+
+spriteset(depot_snow, "gfx/depot_snow.png") {
+  [   42, 85, 	24, 28, 	 9 , -12]   
+  [    2, 24, 	64, 58,	  	-9 , -42] 
+  [   82, 85, 	24, 28,	 	-31, -12] 
+  [   82, 24, 	64, 58,	 	-53, -42]
+  [  242, 24, 	64, 58, 	-53, -42]
+  [  162, 24, 	64, 58,  	-9 , -42] 
+}
+
+switch (FEAT_RAILTYPES, SELF, get_depots, terrain_type) {
+  TILETYPE_SNOW: depot_snow;
+  depot;
+}
+
+//*signals
+//semaphores
+
+template template_semaphore_signals() {
+    [   0 , 0, 20, 30, -10, -30] //sw
+    [   30, 0, 20, 30, -10, -30] //ne
+    [   60, 0, 20, 30, -10, -30] //nw
+    [   90, 0, 20, 30, -10, -30] //se
+    [  120, 0, 20, 30, -10, -30] //e
+    [  150, 0, 20, 30, -10, -30] //w
+    [  180, 0, 20, 30, -10, -28] //s
+    [  210, 0, 20, 30, -10, -28] //n
+    [   0 ,40, 20, 30, -10, -30] //sw
+    [   30,40, 20, 30, -10, -30] //ne
+    [   60,40, 20, 30, -10, -30] //nw
+    [   90,40, 20, 30, -10, -30] //se
+    [  120,40, 20, 30, -10, -30] //e
+    [  150,40, 20, 30, -10, -30] //w
+    [  180,40, 20, 30, -10, -28] //s
+    [  210,40, 20, 30, -10, -28] //n
+}
+
+spriteset (spriteset_semaphore_block_green, "gfx/semaphores_block.png") {
+    template_semaphore_signals()
+}
+spriteset (spriteset_semaphore_block_red, "gfx/semaphores_block.png") {
+    template_semaphore_signals()
+}
+spriteset (spriteset_semaphore_block_combo_green, "gfx/semaphores_block_combo.png") {
+    template_semaphore_signals()
+}
+spriteset (spriteset_semaphore_block_combo_red, "gfx/semaphores_block_combo.png") {
+    template_semaphore_signals()
+}
+spriteset (spriteset_semaphore_block_entry_green, "gfx/semaphores_block_entry.png") {
+    template_semaphore_signals()
+}
+spriteset (spriteset_semaphore_block_entry_red, "gfx/semaphores_block_entry.png") {
+    template_semaphore_signals()
+}
+spriteset (spriteset_semaphore_block_exit_green, "gfx/semaphores_block_exit.png") {
+    template_semaphore_signals()
+}
+spriteset (spriteset_semaphore_block_exit_red, "gfx/semaphores_block_exit.png") {
+    template_semaphore_signals()
+}
+spriteset (spriteset_semaphore_path_oneway_green, "gfx/semaphores_path_oneway.png") {
+    template_semaphore_signals()
+}
+spriteset (spriteset_semaphore_path_oneway_red, "gfx/semaphores_path_oneway.png") {
+    template_semaphore_signals()
+}
+spriteset (spriteset_semaphore_path_twoway_green, "gfx/semaphores_path_twoway.png") {
+    template_semaphore_signals()
+}
+spriteset (spriteset_semaphore_path_twoway_red, "gfx/semaphores_path_twoway.png") {
+    template_semaphore_signals()
+}
+
+//Light signals
+
+template template_light_signals() {
+    [   0 , 0, 20, 30, -10, -30] //sw
+    [   30, 0, 20, 30, -10, -30] //ne
+    [   60, 0, 20, 30, -10, -30] //nw
+    [   90, 0, 20, 30, -10, -30] //se
+    [  120, 0, 20, 30, -10, -30] //e
+    [  150, 0, 20, 30, -10, -30] //w
+    [  180, 0, 20, 30, -10, -28] //s
+    [  210, 0, 20, 30, -10, -28] //n
+    [   0 ,40, 20, 30, -10, -30] //sw
+    [   30,40, 20, 30, -10, -30] //ne
+    [   60,40, 20, 30, -10, -30] //nw
+    [   90,40, 20, 30, -10, -30] //se
+    [  120,40, 20, 30, -10, -30] //e
+    [  150,40, 20, 30, -10, -30] //w
+    [  180,40, 20, 30, -10, -28] //s
+    [  210,40, 20, 30, -10, -28] //n
+}
+
+template template_light_signals2() {
+    [   0 ,40, 20, 30, -10, -30] //sw
+    [   30,40, 20, 30, -10, -30] //ne
+    [   60,40, 20, 30, -10, -30] //nw
+    [   90,40, 20, 30, -10, -30] //se
+    [  120,40, 20, 30, -10, -30] //e
+    [  150,40, 20, 30, -10, -30] //w
+    [  180,40, 20, 30, -10, -28] //s
+    [  210,40, 20, 30, -10, -28] //n
+	[   0 , 0, 20, 30, -10, -30] //sw
+    [   30, 0, 20, 30, -10, -30] //ne
+    [   60, 0, 20, 30, -10, -30] //nw
+    [   90, 0, 20, 30, -10, -30] //se
+    [  120, 0, 20, 30, -10, -30] //e
+    [  150, 0, 20, 30, -10, -30] //w
+    [  180, 0, 20, 30, -10, -28] //s
+    [  210, 0, 20, 30, -10, -28] //n
+}
+
+
+spriteset (spriteset_signals_block_green, "gfx/signals_block.png") {
+    template_light_signals()
+}
+spriteset (spriteset_signals_block_red, "gfx/signals_block.png") {
+    template_light_signals2()
+}
+spriteset (spriteset_signals_block_entry_green, "gfx/signals_block_entry.png") {
+    template_light_signals()
+}
+spriteset (spriteset_signals_block_entry_red, "gfx/signals_block_entry.png") {
+    template_light_signals2()
+}
+spriteset (spriteset_signals_block_exit_green, "gfx/signals_block_exit.png") {
+    template_light_signals()
+}
+spriteset (spriteset_signals_block_exit_red, "gfx/signals_block_exit.png") {
+    template_light_signals2()
+}
+spriteset (spriteset_signals_block_combo_green, "gfx/signals_block_combo.png") {
+    template_light_signals()
+}
+spriteset (spriteset_signals_block_combo_red, "gfx/signals_block_combo.png") {
+    template_light_signals2()
+}
+spriteset (spriteset_signals_path_oneway_green, "gfx/signals_path_oneway.png") {
+    template_light_signals()
+}
+spriteset (spriteset_signals_path_oneway_red, "gfx/signals_path_oneway.png") {
+    template_light_signals2()
+}
+spriteset (spriteset_signals_path_twoway_green, "gfx/signals_path_twoway.png") {
+    template_light_signals()
+}
+spriteset (spriteset_signals_path_twoway_red, "gfx/signals_path_twoway.png") {
+    template_light_signals2()
+}
+
+switch (FEAT_RAILTYPES, SELF, switch_signals_type, extra_callback_info2 & 0x00FFFFFF) {
+    //light signals
+    //TT         VV        SS
+    (0 << 16) | (0 << 8) | 0 : spriteset_signals_block_red;
+    (0 << 16) | (0 << 8) | 1 : spriteset_signals_block_green;
+    (1 << 16) | (0 << 8) | 0 : spriteset_signals_block_entry_red;
+    (1 << 16) | (0 << 8) | 1 : spriteset_signals_block_entry_green;
+    (2 << 16) | (0 << 8) | 0 : spriteset_signals_block_exit_red;
+    (2 << 16) | (0 << 8) | 1 : spriteset_signals_block_exit_green;
+    (3 << 16) | (0 << 8) | 0 : spriteset_signals_block_combo_red;
+    (3 << 16) | (0 << 8) | 1 : spriteset_signals_block_combo_green;
+    (4 << 16) | (0 << 8) | 0 : spriteset_signals_path_twoway_red;
+    (4 << 16) | (0 << 8) | 1 : spriteset_signals_path_twoway_green;
+    (5 << 16) | (0 << 8) | 0 : spriteset_signals_path_oneway_red;
+    (5 << 16) | (0 << 8) | 1 : spriteset_signals_path_oneway_green;
+    //semaphores
+    //TT         VV        SS
+    (0 << 16) | (1 << 8) | 0 : spriteset_semaphore_block_red;
+    (0 << 16) | (1 << 8) | 1 : spriteset_semaphore_block_green;
+    (1 << 16) | (1 << 8) | 0 : spriteset_semaphore_block_entry_red;
+    (1 << 16) | (1 << 8) | 1 : spriteset_semaphore_block_entry_green;
+    (2 << 16) | (1 << 8) | 0 : spriteset_semaphore_block_exit_red;
+    (2 << 16) | (1 << 8) | 1 : spriteset_semaphore_block_exit_green;
+    (3 << 16) | (1 << 8) | 0 : spriteset_semaphore_block_combo_red;
+    (3 << 16) | (1 << 8) | 1 : spriteset_semaphore_block_combo_green;
+    (4 << 16) | (1 << 8) | 0 : spriteset_semaphore_path_twoway_red;
+    (4 << 16) | (1 << 8) | 1 : spriteset_semaphore_path_twoway_green;
+    (5 << 16) | (1 << 8) | 0 : spriteset_semaphore_path_oneway_red;
+    (5 << 16) | (1 << 8) | 1 : spriteset_semaphore_path_oneway_green;
+
+    CB_FAILED;
+}
+
+//*catenarypylons
+
+spriteset(spriteset_catenarypylons, "gfx/catenarypylons.png") {
+ [ 10,  10,		24, 40, 	-24, -29]
+ [ 34,  10,		24, 40,		  2, -52]
+ [ 58,  10,		24, 40, 	 -8, -44]
+ [ 82,  10,		24, 40, 	-14, -37]
+ [ 106, 10, 	24, 40, 	 -6, -44]
+ [ 130, 10, 	24, 40, 	 -7, -43]
+ [ 154, 10, 	24, 40, 	 -7, -48]
+ [ 178, 10, 	24, 40, 	-15, -48]
+}
+
+//*catenarywires
+
+spriteset(spriteset_catenarywires, "gfx/catenarywires.png") {
+ [ 10, 	100, 	64	, 42,	-45, -31]
+ [ 100, 100, 	64	, 42,	-17, -31]
+ [ 200, 100, 	32	, 11,	-1 , -23]
+ [ 300, 100, 	1	, 21,	 0 , -19]
+ [ 10, 	200, 	64	, 50,	-45, -32]
+ [ 100, 200, 	64	, 34,	-17, -21]
+ [ 200, 200, 	64	, 34,	-45, -21]
+ [ 300, 200, 	64	, 50,	-17, -32]
+ [ 10, 	300, 	64	, 42,	-45, -31]
+ [ 100, 300, 	64	, 42,	-17, -31]
+ [ 200, 300, 	32	, 11,	-1 , -23]
+ [ 300, 300, 	1	, 21,	 0 , -19]
+ [ 10, 	400, 	64	, 50,	-45, -32]
+ [ 100, 400, 	64	, 34,	-17, -21]
+ [ 200, 400, 	64	, 34,	-45, -21]
+ [ 300, 400, 	64	, 50,	-17, -32]
+ [ 10, 	500, 	64	, 42,	-45, -31]
+ [ 100, 500, 	64	, 42,	-17, -31]
+ [ 200, 500, 	32	, 11,	-1 , -23]
+ [ 300, 500, 	1	, 21,	 0 , -19]
+ [ 10, 	600, 	64	, 50,	-45, -32]
+ [ 100, 600, 	64	, 34,	-17, -21]
+ [ 200, 600, 	64	, 34,	-45, -21]
+ [ 300, 600, 	64	, 50,	-17, -32]
+ [ 10, 	700, 	64	, 42,	-45, -31]
+ [ 100, 700, 	64	, 42,	-17, -31]
+ [ 200, 700, 	64	, 42,	-45, -31]
+ [ 300, 700, 	64	, 42,	-17, -31]
+}
+
+//*Level Crossings
+
+spriteset(levcrossing, "gfx/levelcrossing.png") {
+ [  1,     1,       64,    31,       -31,          0]
+ [ 66,     1,       64,    31,       -31,          0]
+ [  1,   115,       64,    50,       -31,        -19]	
+ [ 66,   115,       64,    50,       -31,        -19]
+ [  1,    50,       64,    50,       -57,        -32]
+ [196,   115,       64,    50,       -57,        -32]
+ [131,   115,       64,    50,        -5,        -32]
+ [ 66,    50,       64,    50,        -5,        -32]
+ [131,    50,       64,    50,       -31,        -45]
+ [196,    50,       64,    50,       -31,        -45]
+}
+
+//*Railtype Properties
+item(FEAT_RAILTYPES, SKIL) {
+property {
+	label					: "SKIL";
+	introduction_date		: date(1910,1,1);
+	name					: string(STR_TRACK_TYPE);
+	toolbar_caption			: string(STR_CONSTRUCTION);
+	menu_text				: string(STR_MENU);
+	build_window_caption	: string(STR_BUILD_CAPTION);
+	autoreplace_text		: string(STR_AUTOREPLACE);
+	new_engine_text			: string(STR_NEW_ENGINE);
+	construction_cost		: 10;
+	maintenance_cost		: 1;
+	railtype_flags			: bitmask(RAILTYPE_FLAG_CATENARY);
+	speed_limit				: 0;      
+	acceleration_model		: ACC_MODEL_MONORAIL;
+	map_colour				: 56;
+	}
+
+ graphics {
+	track_overlay	: track_overlay;
+	underlay		: track_underlay;
+	tunnels			: tunnel_tracks;
+	tunnel_overlay	: tunnel_overlay_switch;
+	bridge_surfaces	: bridge_tracks;
+	level_crossings	: levcrossing;
+	fences			: spriteset_nofences;
+	gui				: gui;
+	depots			: get_depots;
+	signals			: switch_signals_type;
+	catenary_pylons	: spriteset_catenarypylons;
+	catenary_wire	: spriteset_catenarywires;
+	}
+}
+
+railtypetable {
+    SKIL
+}
+
+//*Vehicle spritesets
+
+spriteset(vehicle1_empty, "gfx/vehicle1.png") {
+	[ 0, 	0, 		8	, 12,	-4,-25]
+	[ 10,   0, 		8	, 12,	-4,-24]
+	[ 20, 	0, 		8	, 12,	 4,-22]
+	[ 30, 	0, 		8	, 12,	 5,-20]
+	[ 40, 	0, 		8	, 12,	-4,-22]
+	[ 50, 	0, 		8	, 12,  -12,-18]
+	[ 60,	0, 		8	, 12,  -12,-22]
+	[ 70,	0, 		8	, 12,	-5,-25]
+	}
+	
+spriteset(vehicle1_full, "gfx/vehicle1full.png") {
+	[ 0, 	0, 		8	, 12,	-4,-25]
+	[ 10,   0, 		8	, 12,	-4,-24]
+	[ 20, 	0, 		8	, 12,	 4,-22]
+	[ 30, 	0, 		8	, 12,	 5,-20]
+	[ 40, 	0, 		8	, 12,	-4,-22]
+	[ 50, 	0, 		8	, 12,  -12,-18]
+	[ 60,	0, 		8	, 12,  -12,-22]
+	[ 70,	0, 		8	, 12,	-5,-25]
+	}
+	
+spriteset(vehicle1_gui, "gfx/vehicle1.png") {
+	[ 0, 	0, 		8	, 12,	-12, -4]
+	[ 10,   0, 		8	, 12,	-12, -4]
+	[ 20, 	0, 		8	, 12,	-12, -4]
+	[ 30, 	0, 		8	, 12,	-12, -4]
+	[ 40, 	0, 		8	, 12,	-12, -4]
+	[ 50, 	0, 		8	, 12,	-12, -4]
+	[ 60,	0, 		8	, 12,	-12, -4]
+	[ 70,	0, 		8	, 12,	-12, -4]
+	}
+
+spriteset(vehicle2_set, "gfx/vehicle2.png") {
+	[ 1, 	1, 		 8, 24,    	 -3, -22]
+	[ 10,   1, 		22, 20, 	-14, -22]
+	[ 33, 	1, 		32, 16, 	-12, -22]
+	[ 66, 	1, 		22, 20, 	-6 , -22]
+	[ 89, 	1, 		 8, 24,	 	 -3, -22]
+	[ 98, 	1, 		22, 20, 	-18, -20]
+	[ 121,	1, 		32, 16, 	-20, -22]
+	[ 154,	1, 		22, 20, 	-10, -24]
+	}
+
+spriteset(vehicle2_gui, "gfx/vehicle2.png") {
+	[ 1, 	1, 		 8, 24,    	 -3, -7]
+	[ 10,   1, 		22, 20, 	-14, -7]
+	[ 33, 	1, 		32, 16, 	-16, -7]
+	[ 66, 	1, 		22, 20, 	-14, -7]
+	[ 89, 	1, 		 8, 24,	 	 -3, -7]
+	[ 98, 	1, 		22, 20, 	-14, -7]
+	[ 121,	1, 		32, 16, 	-16, -7]
+	[ 154,	1, 		22, 20, 	-14, -7]
+	}
+	
+spriteset(vehicle3_set, "gfx/vehicle3.png") {
+	[ 1, 	1, 		 8, 24,    	 -3, -22]
+	[ 10,   1, 		22, 20, 	-14, -22]
+	[ 33, 	1, 		32, 16, 	-12, -22]
+	[ 66, 	1, 		22, 20, 	-6 , -22]
+	[ 89, 	1, 		 8, 24,	 	 -3, -22]
+	[ 98, 	1, 		22, 20, 	-18, -20]
+	[ 121,	1, 		32, 16, 	-20, -22]
+	[ 154,	1, 		22, 20, 	-10, -24]
+	}
+
+spriteset(vehicle3_gui, "gfx/vehicle3.png") {
+	[ 1, 	1, 		 8, 24,    	 -3, -7]
+	[ 10,   1, 		22, 20, 	-14, -7]
+	[ 33, 	1, 		32, 16, 	-16, -7]
+	[ 66, 	1, 		22, 20, 	-14, -7]
+	[ 89, 	1, 		 8, 24,	 	 -3, -7]
+	[ 98, 	1, 		22, 20, 	-14, -7]
+	[ 121,	1, 		32, 16, 	-16, -7]
+	[ 154,	1, 		22, 20, 	-14, -7]
+	}
+	
+spriteset(vehicle4_set, "gfx/vehicle4.png") {
+	[ 1, 	1, 		 8, 24,    	 -3, -22]
+	[ 10,   1, 		22, 20, 	-14, -22]
+	[ 33, 	1, 		32, 16, 	-12, -22]
+	[ 66, 	1, 		22, 20, 	-6 , -22]
+	[ 89, 	1, 		 8, 24,	 	 -3, -22]
+	[ 98, 	1, 		22, 20, 	-18, -20]
+	[ 121,	1, 		32, 16, 	-20, -22]
+	[ 154,	1, 		22, 20, 	-10, -24]
+	}
+
+spriteset(vehicle4_gui, "gfx/vehicle4.png") {
+	[ 1, 	1, 		 8, 24,    	 -3, -7]
+	[ 10,   1, 		22, 20, 	-14, -7]
+	[ 33, 	1, 		32, 16, 	-16, -7]
+	[ 66, 	1, 		22, 20, 	-14, -7]
+	[ 89, 	1, 		 8, 24,	 	 -3, -7]
+	[ 98, 	1, 		22, 20, 	-14, -7]
+	[ 121,	1, 		32, 16, 	-16, -7]
+	[ 154,	1, 		22, 20, 	-14, -7]
+	}
+
+spriteset(vehicle5_set, "gfx/vehicle5.png") {
+	[ 1, 	1, 		 8, 24,    	 -3, -22]
+	[ 10,   1, 		22, 20, 	-14, -22]
+	[ 33, 	1, 		32, 16, 	-12, -22]
+	[ 66, 	1, 		22, 20, 	-6 , -22]
+	[ 89, 	1, 		 8, 24,	 	 -3, -22]
+	[ 98, 	1, 		22, 20, 	-18, -20]
+	[ 121,	1, 		32, 16, 	-20, -22]
+	[ 154,	1, 		22, 20, 	-10, -24]
+	}
+
+spriteset(vehicle5_gui, "gfx/vehicle5.png") {
+	[ 1, 	1, 		 8, 24,    	 -3, -7]
+	[ 10,   1, 		22, 20, 	-14, -7]
+	[ 33, 	1, 		32, 16, 	-16, -7]
+	[ 66, 	1, 		22, 20, 	-14, -7]
+	[ 89, 	1, 		 8, 24,	 	 -3, -7]
+	[ 98, 	1, 		22, 20, 	-14, -7]
+	[ 121,	1, 		32, 16, 	-16, -7]
+	[ 154,	1, 		22, 20, 	-14, -7]
+	}
+
+
+//
+
+spritegroup vehicle1_set {
+    loading: [vehicle1_empty, vehicle1_full];
+	loaded:  [vehicle1_empty, vehicle1_full];
+}
+
+//
+
+switch(FEAT_TRAINS,SELF,vehicle1_switch,getbits(extra_callback_info1, 0, 8)) {
+	0x10: vehicle1_gui; //depot gui
+	0x11: vehicle1_gui; //vehicle details
+	0x12: vehicle1_gui; //vehicle list
+	0x20: vehicle1_gui; //purchase list
+	0x21: vehicle1_gui; //preview gui
+	vehicle1_set;
+	}
+
+switch(FEAT_TRAINS,SELF,vehicle2_switch,getbits(extra_callback_info1, 0, 8)) {
+	0x10: vehicle2_gui; //depot gui
+	0x11: vehicle2_gui; //vehicle details
+	0x12: vehicle2_gui; //vehicle list
+	0x20: vehicle2_gui; //purchase list
+	0x21: vehicle2_gui; //preview gui
+	vehicle2_set;
+	}
+	
+switch(FEAT_TRAINS,SELF,vehicle3_switch,getbits(extra_callback_info1, 0, 8)) {
+	0x10: vehicle3_gui; //depot gui
+	0x11: vehicle3_gui; //vehicle details
+	0x12: vehicle3_gui; //vehicle list
+	0x20: vehicle3_gui; //purchase list
+	0x21: vehicle3_gui; //preview gui
+	vehicle3_set;
+	}
+	
+switch(FEAT_TRAINS,SELF,vehicle4_switch,getbits(extra_callback_info1, 0, 8)) {
+	0x10: vehicle4_gui; //depot gui
+	0x11: vehicle4_gui; //vehicle details
+	0x12: vehicle4_gui; //vehicle list
+	0x20: vehicle4_gui; //purchase list
+	0x21: vehicle4_gui; //preview gui
+	vehicle4_set;
+	}
+	
+switch(FEAT_TRAINS,SELF,vehicle5_switch,getbits(extra_callback_info1, 0, 8)) {
+	0x10: vehicle5_gui; //depot gui
+	0x11: vehicle5_gui; //vehicle details
+	0x12: vehicle5_gui; //vehicle list
+	0x20: vehicle5_gui; //purchase list
+	0x21: vehicle5_gui; //preview gui
+	vehicle5_set;
+	}
+
+switch(FEAT_TRAINS, SELF, sndstart, getbits(extra_callback_info1, 0, 8)) {
+	SOUND_EVENT_START: return SOUND_MAGLEV;
+	return CB_RESULT_NO_SOUND;
+	}
+
+//*Vehicle Items
+
+item(FEAT_TRAINS, veh_1) {
+    property {
+        name:                         	string(STR_VEH1);
+        climates_available:           	ALL_CLIMATES; 
+        introduction_date:            	date(1900, 1, 1);
+        model_life:                   	VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 	30;
+        reliability_decay:            	20;
+        refittable_cargo_classes:     	bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: 	bitmask();
+        loading_speed:                	30; 
+        cost_factor:                  	10;
+        running_cost_factor:          	100;
+        sprite_id:                    	SPRITE_ID_NEW_TRAIN;
+        speed:                        	19 km/h;
+        misc_flags:                   	bitmask(TRAIN_FLAG_MU);
+        refit_cost:                   	0;
+        track_type:                   	SKIL;
+        ai_special_flag:              	AI_FLAG_PASSENGER;
+        power:                        	1260 kW;
+        running_cost_base:            	RUNNING_COST_ELECTRIC;
+        dual_headed:                  	0;
+        cargo_capacity:               	3;
+        weight:                       	144 ton;
+        ai_engine_rank:               	0;
+        engine_class:                 	ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        	0 kW;
+        tractive_effort_coefficient:  	0.3 / 3;
+        air_drag_coefficient:         	0.06;
+        visual_effect_and_powered:    	VISUAL_EFFECT_DISABLE;
+        extra_weight_per_wagon:       	0 ton;
+        bitmask_vehicle_info:         	0;
+		length:							3;
+    }
+    graphics {
+        default:                        vehicle1_switch;
+		sound_effect:					sndstart;
+    }
+}
+
+item(FEAT_TRAINS, veh_2) {
+    property {
+        name:                         	string(STR_VEH2);
+        climates_available:           	ALL_CLIMATES; 
+        introduction_date:            	date(1930, 1, 1);
+        model_life:                   	VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 	30;
+        reliability_decay:            	20;
+        refittable_cargo_classes:     	bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: 	bitmask();
+        loading_speed:                	30; 
+        cost_factor:                  	45;
+        running_cost_factor:          	100;
+        sprite_id:                    	SPRITE_ID_NEW_TRAIN;
+        speed:                        	19 km/h;
+        misc_flags:                   	bitmask(TRAIN_FLAG_MU);
+        refit_cost:                   	0;
+        track_type:                   	SKIL;
+        ai_special_flag:              	AI_FLAG_PASSENGER;
+        power:                        	1260 kW;
+        running_cost_base:            	RUNNING_COST_ELECTRIC;
+        dual_headed:                  	0;
+        cargo_capacity:               	6;
+        weight:                       	144 ton;
+        ai_engine_rank:               	0;
+        engine_class:                 	ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        	0 kW;
+        tractive_effort_coefficient:  	0.3 / 3;
+        air_drag_coefficient:         	0.06;
+        visual_effect_and_powered:    	VISUAL_EFFECT_DISABLE;
+        extra_weight_per_wagon:       	0 ton;
+        bitmask_vehicle_info:         	0;
+		length:							6;
+    }
+    graphics {
+        default:                      	vehicle2_switch;
+		sound_effect:					sndstart;
+    }
+}
+
+item(FEAT_TRAINS, veh_3) {
+    property {
+        name:                         	string(STR_VEH3);
+        climates_available:           	ALL_CLIMATES; 
+        introduction_date:            	date(1930, 1, 1);
+        model_life:                   	VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 	30;
+        reliability_decay:            	20;
+        refittable_cargo_classes:     	bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: 	bitmask();
+        loading_speed:                	30; 
+        cost_factor:                  	45;
+        running_cost_factor:          	100;
+        sprite_id:                    	SPRITE_ID_NEW_TRAIN;
+        speed:                        	19 km/h;
+        misc_flags:                   	bitmask(TRAIN_FLAG_MU);
+        refit_cost:                   	0;
+        track_type:                   	SKIL;
+        ai_special_flag:              	AI_FLAG_PASSENGER;
+        power:                        	1260 kW;
+        running_cost_base:            	RUNNING_COST_ELECTRIC;
+        dual_headed:                  	0;
+        cargo_capacity:               	10;
+        weight:                       	144 ton;
+        ai_engine_rank:               	0;
+        engine_class:                 	ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        	0 kW;
+        tractive_effort_coefficient:  	0.3 / 3;
+        air_drag_coefficient:         	0.06;
+        visual_effect_and_powered:    	VISUAL_EFFECT_DISABLE;
+        extra_weight_per_wagon:       	0 ton;
+        bitmask_vehicle_info:         	0;
+		length:							6;
+    }
+    graphics {
+        default:                      	vehicle3_switch;
+		sound_effect:					sndstart;
+    }
+}
+
+item(FEAT_TRAINS, veh_4) {
+    property {
+        name:                         	string(STR_VEH4);
+        climates_available:           	ALL_CLIMATES; 
+        introduction_date:            	date(1930, 1, 1);
+        model_life:                   	VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 	30;
+        reliability_decay:            	20;
+        refittable_cargo_classes:     	bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: 	bitmask();
+        loading_speed:                	30; 
+        cost_factor:                  	45;
+        running_cost_factor:          	100;
+        sprite_id:                    	SPRITE_ID_NEW_TRAIN;
+        speed:                        	31 km/h;
+        misc_flags:                   	bitmask(TRAIN_FLAG_MU);
+        refit_cost:                   	0;
+        track_type:                   	SKIL;
+        ai_special_flag:              	AI_FLAG_PASSENGER;
+        power:                        	1260 kW;
+        running_cost_base:            	RUNNING_COST_ELECTRIC;
+        dual_headed:                  	0;
+        cargo_capacity:               	8;
+        weight:                       	144 ton;
+        ai_engine_rank:               	0;
+        engine_class:                 	ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        	0 kW;
+        tractive_effort_coefficient:  	0.3 / 3;
+        air_drag_coefficient:         	0.06;
+        visual_effect_and_powered:    	VISUAL_EFFECT_DISABLE;
+        extra_weight_per_wagon:       	0 ton;
+        bitmask_vehicle_info:         	0;
+		length:							6;
+    }
+    graphics {
+        default:                      	vehicle4_switch;
+		sound_effect:					sndstart;
+    }
+}
+
+item(FEAT_TRAINS, veh_5) {
+    property {
+        name:                         	string(STR_VEH5);
+        climates_available:           	ALL_CLIMATES; 
+        introduction_date:            	date(1930, 1, 1);
+        model_life:                   	VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 	30;
+        reliability_decay:            	20;
+        refittable_cargo_classes:     	bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: 	bitmask();
+        loading_speed:                	30; 
+        cost_factor:                  	45;
+        running_cost_factor:          	100;
+        sprite_id:                    	SPRITE_ID_NEW_TRAIN;
+        speed:                        	31 km/h;
+        misc_flags:                   	bitmask(TRAIN_FLAG_MU);
+        refit_cost:                   	0;
+        track_type:                   	SKIL;
+        ai_special_flag:              	AI_FLAG_PASSENGER;
+        power:                        	1260 kW;
+        running_cost_base:            	RUNNING_COST_ELECTRIC;
+        dual_headed:                  	0;
+        cargo_capacity:               	15;
+        weight:                       	144 ton;
+        ai_engine_rank:               	0;
+        engine_class:                 	ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        	0 kW;
+        tractive_effort_coefficient:  	0.3 / 3;
+        air_drag_coefficient:         	0.06;
+        visual_effect_and_powered:    	VISUAL_EFFECT_DISABLE;
+        extra_weight_per_wagon:       	0 ton;
+        bitmask_vehicle_info:         	0;
+		length:							6;
+    }
+    graphics {
+        default:                      	vehicle5_switch;
+		sound_effect:					sndstart;
+    }
+}

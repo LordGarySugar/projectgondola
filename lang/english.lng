@@ -1,0 +1,26 @@
+##grflangid 0x01
+
+#Main grf title and description
+STR_GRF_NAME				:{TITLE}
+STR_GRF_DESCRIPTION			:{BLUE}{TITLE} {VERSION}{}{WHITE}New track type plus vehicle set for all your cable car needs{}{}{BROWN}By Javelin{ORANGE}NL{}{BLACK}Inspired by Cable Car Newgrf{}Uses code from Railtype_template by Quast65 and GarryG{}http://www.simuscape.net/simutalk/viewtopic.php?f=85&t=898
+STR_GRF_URL					:https://github.com/javelinnl/projectgondola
+
+#Tracktypes
+
+STR_TRACK_TYPE		:Ropeway
+STR_CONSTRUCTION	:Cable car construction
+STR_MENU			:Cable car construction
+STR_BUILD_CAPTION	:New cable cars
+STR_AUTOREPLACE		:Ski lift
+STR_NEW_ENGINE		:Ski lift
+
+#Vehicles
+
+STR_VEH1			:Doublemare Chairlift
+STR_VEH2			:GDM Miller T-50 Gondola
+STR_VEH3			:GDM Miller T-100 Gondola
+STR_VEH4			:Karvertech Pendelbahn 30
+STR_VEH5			:Karvertech Pendelbahn 50
+
+
+
