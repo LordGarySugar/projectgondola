@@ -693,7 +693,7 @@ item(FEAT_TRAINS, veh_1) {
         running_cost_factor:          	100;
         sprite_id:                    	SPRITE_ID_NEW_TRAIN;
         speed:                        	19 km/h;
-        misc_flags:                   	bitmask(TRAIN_FLAG_MU);
+        misc_flags:                   	bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_NO_BREAKDOWN_SMOKE);
         refit_cost:                   	0;
         track_type:                   	SKIL;
         ai_special_flag:              	AI_FLAG_PASSENGER;
@@ -733,7 +733,7 @@ item(FEAT_TRAINS, veh_2) {
         running_cost_factor:          	100;
         sprite_id:                    	SPRITE_ID_NEW_TRAIN;
         speed:                        	19 km/h;
-        misc_flags:                   	bitmask(TRAIN_FLAG_MU);
+        misc_flags:                   	bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_NO_BREAKDOWN_SMOKE);
         refit_cost:                   	0;
         track_type:                   	SKIL;
         ai_special_flag:              	AI_FLAG_PASSENGER;
@@ -773,7 +773,7 @@ item(FEAT_TRAINS, veh_3) {
         running_cost_factor:          	100;
         sprite_id:                    	SPRITE_ID_NEW_TRAIN;
         speed:                        	19 km/h;
-        misc_flags:                   	bitmask(TRAIN_FLAG_MU);
+        misc_flags:                   	bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_NO_BREAKDOWN_SMOKE);
         refit_cost:                   	0;
         track_type:                   	SKIL;
         ai_special_flag:              	AI_FLAG_PASSENGER;
@@ -813,7 +813,7 @@ item(FEAT_TRAINS, veh_4) {
         running_cost_factor:          	100;
         sprite_id:                    	SPRITE_ID_NEW_TRAIN;
         speed:                        	31 km/h;
-        misc_flags:                   	bitmask(TRAIN_FLAG_MU);
+        misc_flags:                   	bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_NO_BREAKDOWN_SMOKE);
         refit_cost:                   	0;
         track_type:                   	SKIL;
         ai_special_flag:              	AI_FLAG_PASSENGER;
@@ -853,7 +853,7 @@ item(FEAT_TRAINS, veh_5) {
         running_cost_factor:          	100;
         sprite_id:                    	SPRITE_ID_NEW_TRAIN;
         speed:                        	31 km/h;
-        misc_flags:                   	bitmask(TRAIN_FLAG_MU);
+        misc_flags:                   	bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_NO_BREAKDOWN_SMOKE);
         refit_cost:                   	0;
         track_type:                   	SKIL;
         ai_special_flag:              	AI_FLAG_PASSENGER;
