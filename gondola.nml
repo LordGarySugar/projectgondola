@@ -9,277 +9,220 @@ grf {
 
 //overlay
 
-spriteset(overlay1, "gfx/overlay.png") {
-    [   1,    1,       64,    31,     -31,        0]
-    [  66,    1,       64,    31,     -31,        0]
-    [ 131,    1,       64,    31,     -31,        0]
-    [ 196,    1,       64,    31,     -31,        0]
-    [ 261,    1,       64,    31,     -31,        0]
-    [ 326,    1,       64,    31,     -31,        0]
-	//Slopes
-    [ 391,    1,       64,    38,     -31,       -8]
-    [ 456,    1,       64,    22,     -31,        0]
-    [ 521,    1,       64,    22,     -31,        0]
-    [ 586,    1,       64,    38,     -31,        0]
+template tmpl_overunderlay() {
+[   1,    1,       64,    31,     -31,         0]
+[  66,    1,       64,    31,     -31,         0]
+[ 131,    1,       64,    31,     -31,         0]
+[ 196,    1,       64,    31,     -31,         0]
+[ 261,    1,       64,    31,     -31,         0]
+[ 326,    1,       64,    31,     -31,         0]
+
+[ 391,    1,       64,    38,     -31,        -8]
+[ 456,    1,       64,    22,     -31,         0]
+[ 521,    1,       64,    22,     -31,         0]
+[ 586,    1,       64,    38,     -31,        -8]
+[ 586,    1,       64,    38,     -31,        -8]
+
+[   1,   49,       64,    31,     -31,         0]
+
+[  66,   49,       64,    31,     -31,         0]
+[ 131,   49,       64,    31,     -31,         0]
+[ 196,   49,       64,    31,     -31,         0]
+[ 261,   49,       64,    31,     -31,         0]
+[ 326,   49,       64,    31,     -31,         0]
 }
 
-spriteset(overlay2, "gfx/overlay_snow.png") {
-    [   1,    1,       64,    31,     -31,        0]
-    [  66,    1,       64,    31,     -31,        0]
-    [ 131,    1,       64,    31,     -31,        0]
-    [ 196,    1,       64,    31,     -31,        0]
-    [ 261,    1,       64,    31,     -31,        0]
-    [ 326,    1,       64,    31,     -31,        0]
-	//Slopes
-    [ 391,    1,       64,    38,     -31,       -8]
-    [ 456,    1,       64,    22,     -31,        0]
-    [ 521,    1,       64,    22,     -31,        0]
-    [ 586,    1,       64,    38,     -31,        0]
+spriteset(overlay1, "gfx/underlay.png") {
+tmpl_overunderlay()
+}
+
+spriteset(overlay2, "gfx/underlay_snow.png") {
+tmpl_overunderlay()
 }
 
 switch (FEAT_RAILTYPES, SELF, track_overlay, terrain_type) {
-  TILETYPE_SNOW: overlay2;
-  overlay1;
+	TILETYPE_SNOW: overlay2;
+	overlay1;
 }
 
 //underlay
 
 spriteset(underlay1, "gfx/underlay.png") {
-    [   1,    1,       64,    31,     -31,         0]
-    [  66,    1,       64,    31,     -31,         0]
-    [ 131,    1,       64,    31,     -31,         0]
-    [ 196,    1,       64,    31,     -31,         0]
-    [ 261,    1,       64,    31,     -31,         0]
-    [ 326,    1,       64,    31,     -31,         0]
-	//Slopes
-    [ 391,    1,       64,    38,     -31,        -8]
-    [ 456,    1,       64,    22,     -31,         0]
-    [ 521,    1,       64,    22,     -31,         0]
-    [ 586,    1,       64,    38,     -31,        -8]
-    [ 586,    1,       64,    38,     -31,        -8]
-	//Crossing
-    [   1,   49,       64,    31,     -31,         0]
-    //Ground for switches
-    [  66,   49,       64,    31,     -31,         0]
-    [ 131,   49,       64,    31,     -31,         0]
-    [ 196,   49,       64,    31,     -31,         0]
-    [ 261,   49,       64,    31,     -31,         0]
-    [ 326,   49,       64,    31,     -31,         0]
+	tmpl_overunderlay()
 }
 
 spriteset(underlay2, "gfx/underlay_snow.png") {
-    [   1,    1,       64,    31,     -31,         0]
-    [  66,    1,       64,    31,     -31,         0]
-    [ 131,    1,       64,    31,     -31,         0]
-    [ 196,    1,       64,    31,     -31,         0]
-    [ 261,    1,       64,    31,     -31,         0]
-    [ 326,    1,       64,    31,     -31,         0]
-	//Slopes
-    [ 391,    1,       64,    38,     -31,        -8]
-    [ 456,    1,       64,    22,     -31,         0]
-    [ 521,    1,       64,    22,     -31,         0]
-    [ 586,    1,       64,    38,     -31,        -8]
-    [ 586,    1,       64,    38,     -31,        -8]
-	//Crossing
-    [   1,   49,       64,    31,     -31,         0]
-    //Ground for switches
-    [  66,   49,       64,    31,     -31,         0]
-    [ 131,   49,       64,    31,     -31,         0]
-    [ 196,   49,       64,    31,     -31,         0]
-    [ 261,   49,       64,    31,     -31,         0]
-    [ 326,   49,       64,    31,     -31,         0]
+	tmpl_overunderlay()
 }
 
 switch (FEAT_RAILTYPES, SELF, track_underlay, terrain_type) {
-  TILETYPE_SNOW: underlay2;
-  underlay1;
+	TILETYPE_SNOW: underlay2;
+	underlay1;
 }
 
 //*Tunnels
 
 template tmpl_tunnel_overlaytracks() {
-	//left_x, upper_y, width, height, offset_x, offset_y 
- [ 10, 50, 64, 64, -31, -33]
- [158, 50, 64, 64, -31, -33]
- [306, 50, 64, 64, -31, -33]
- [454, 50, 64, 64, -31, -33]
- }
-
- template tmpl_tunnel_overlays() {
-	//left_x, upper_y, width, height, offset_x, offset_y 
- [ 84, 50, 64, 64, -31, -63]
- [232, 50, 64, 64, -31, -63]
- [380, 50, 64, 64, -31, -63]
- [528, 50, 64, 64, -31, -63]
+[ 10, 50, 	64, 64, 	-31, -33]
+[158, 50, 	64, 64, 	-31, -33]
+[306, 50, 	64, 64, 	-31, -33]
+[454, 50, 	64, 64, 	-31, -33]
 }
 
-/*
-//Remove trackless tunnelgraphics from OpenGFX-extra
-replacenew (RAILTYPE_TUNNELS, "gfx/notracklesstunnels.png") { 
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-} 
-*/
+template tmpl_tunnel_overlays() {
+[ 84, 50, 	64, 64, 	-31, -63]
+[232, 50, 	64, 64, 	-31, -63]
+[380, 50, 	64, 64, 	-31, -63]
+[528, 50, 	64, 64, 	-31, -63]
+}
 
 spriteset(tunnel_tracks, "gfx/tunnel.png") {
- tmpl_tunnel_overlaytracks()
+	tmpl_tunnel_overlaytracks()
 }
 
 spriteset(tunnel_overlay, "gfx/tunnel.png") {
- tmpl_tunnel_overlays()
+	tmpl_tunnel_overlays()
 }
 spriteset(tunnel_overlay_snow, "gfx/tunnel_snow.png") {
- tmpl_tunnel_overlays()
+	tmpl_tunnel_overlays()
 }
 
 
 switch(FEAT_RAILTYPES, SELF, tunnel_overlay_switch, terrain_type) {
- TILETYPE_SNOW: tunnel_overlay_snow;
- tunnel_overlay;
+	TILETYPE_SNOW: tunnel_overlay_snow;
+	tunnel_overlay;
 }
 
-//*tracks on bridges
+//*Bridge Tracks
 
 spriteset(bridge_tracks, "gfx/bridgetrack.png") {
-	[   1,    1,       64,    31,       -31,        0]
-	[  66,    1,       64,    31,       -31,        0]
-	//Slopes
-	[ 131,    1,       64,    39,       -31,       -8]
-	[ 196,    1,       64,    23,       -31,        0]
-	[ 261,    1,       64,    23,       -31,        0]
-	[ 326,    1,       64,    39,       -31,       -8]
+[   1,    1,       64,    31,       -31,        0]
+[  66,    1,       64,    31,       -31,        0]
+
+[ 131,    1,       64,    39,       -31,       -8]
+[ 196,    1,       64,    23,       -31,        0]
+[ 261,    1,       64,    23,       -31,        0]
+[ 326,    1,       64,    39,       -31,       -8]
 }
 
 //*Fences
 
 spriteset(spriteset_nofences, "gfx/nofences.png") {
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
-	[  0,0,1,1,0,0]
+[0,0,1,1,0,0]
+[0,0,1,1,0,0]
+[0,0,1,1,0,0]
+[0,0,1,1,0,0]
+[0,0,1,1,0,0]
+[0,0,1,1,0,0]
+[0,0,1,1,0,0]
+[0,0,1,1,0,0]
 }
 
 //*Gui
 
 spriteset(gui, "gfx/gui.png") {
- [ 0, 0, 20, 20, 0, 0]
- [ 25, 0, 20, 20, 0, 0]
- [ 50, 0, 20, 20, 0, 0]
- [ 75, 0, 20, 20, 0, 0]
- [100, 0, 20, 20, 0, 0]
- [125, 0, 20, 20, 0, 0]
- [150, 0, 20, 20, 0, 0]
- [175, 0, 20, 20, 0, 0]
- [200, 0, 32, 32, 0, 0]
- [250, 0, 32, 32, 0, 0]
- [300, 0, 32, 32, 0, 0]
- [350, 0, 32, 32, 0, 0]
- [400, 0, 32, 32, 0, 0]
- [450, 0, 32, 32, 0, 0]
- [500, 0, 32, 32, 0, 0]
- [550, 0, 32, 32, 0, 0]
+[  0, 0, 20, 20, 0, 0]
+[ 25, 0, 20, 20, 0, 0]
+[ 50, 0, 20, 20, 0, 0]
+[ 75, 0, 20, 20, 0, 0]
+[100, 0, 20, 20, 0, 0]
+[125, 0, 20, 20, 0, 0]
+[150, 0, 20, 20, 0, 0]
+[175, 0, 20, 20, 0, 0]
+[200, 0, 32, 32, 0, 0]
+[250, 0, 32, 32, 0, 0]
+[300, 0, 32, 32, 0, 0]
+[350, 0, 32, 32, 0, 0]
+[400, 0, 32, 32, 0, 0]
+[450, 0, 32, 32, 0, 0]
+[500, 0, 32, 32, 0, 0]
+[550, 0, 32, 32, 0, 0]
 }
 
 //*Depot
 
+template tmpl_depot() {
+[ 42, 85, 	24, 28,		 9 , -12]   
+[  2, 24, 	64, 58,		-9 , -42] 
+[ 82, 85, 	24, 28,	 	-31, -12] 
+[ 82, 24, 	64, 58,	 	-53, -42]
+[242, 24, 	64, 58, 	-53, -42]
+[162, 24, 	64, 58,  	-9 , -42] 
+}
+
 spriteset(depot, "gfx/depot.png") {
-  [   42, 85, 	24, 28, 	 9 , -12]   
-  [    2, 24, 	64, 58,	  	-9 , -42] 
-  [   82, 85, 	24, 28,	 	-31, -12] 
-  [   82, 24, 	64, 58,	 	-53, -42]
-  [  242, 24, 	64, 58, 	-53, -42]
-  [  162, 24, 	64, 58,  	-9 , -42] 
+tmpl_depot()
 }
 
 spriteset(depot_snow, "gfx/depot_snow.png") {
-  [   42, 85, 	24, 28, 	 9 , -12]   
-  [    2, 24, 	64, 58,	  	-9 , -42] 
-  [   82, 85, 	24, 28,	 	-31, -12] 
-  [   82, 24, 	64, 58,	 	-53, -42]
-  [  242, 24, 	64, 58, 	-53, -42]
-  [  162, 24, 	64, 58,  	-9 , -42] 
+tmpl_depot() 
 }
 
 switch (FEAT_RAILTYPES, SELF, get_depots, terrain_type) {
-  TILETYPE_SNOW: depot_snow;
-  depot;
+	TILETYPE_SNOW: depot_snow;
+	depot;
 }
 
 //*signals
 //semaphores
 
 template template_semaphore_signals() {
-    [   0 , 0, 20, 30, -10, -30] //sw
-    [   30, 0, 20, 30, -10, -30] //ne
-    [   60, 0, 20, 30, -10, -30] //nw
-    [   90, 0, 20, 30, -10, -30] //se
-    [  120, 0, 20, 30, -10, -30] //e
-    [  150, 0, 20, 30, -10, -30] //w
-    [  180, 0, 20, 30, -10, -28] //s
-    [  210, 0, 20, 30, -10, -28] //n
-    [   0 ,40, 20, 30, -10, -30] //sw
-    [   30,40, 20, 30, -10, -30] //ne
-    [   60,40, 20, 30, -10, -30] //nw
-    [   90,40, 20, 30, -10, -30] //se
-    [  120,40, 20, 30, -10, -30] //e
-    [  150,40, 20, 30, -10, -30] //w
-    [  180,40, 20, 30, -10, -28] //s
-    [  210,40, 20, 30, -10, -28] //n
+[    0, 0, 20, 30, -10, -28] //sw
+[   30, 0, 20, 30, -10, -28] //ne
+[   60, 0, 20, 30, -10, -28] //nw
+[   90, 0, 20, 30, -10, -28] //se
+[  120, 0, 20, 30, -10, -28] //e
+[  150, 0, 20, 30, -10, -28] //w
+[  180, 0, 20, 30, -10, -26] //s
+[  210, 0, 20, 30, -10, -26] //n
+}
+
+template template_semaphore_signals2() {
+[    0,40, 20, 30, -10, -28] //sw
+[   30,40, 20, 30, -10, -28] //ne
+[   60,40, 20, 30, -10, -28] //nw
+[   90,40, 20, 30, -10, -28] //se
+[  120,40, 20, 30, -10, -28] //e
+[  150,40, 20, 30, -10, -28] //w
+[  180,40, 20, 30, -10, -26] //s
+[  210,40, 20, 30, -10, -26] //n
 }
 
 spriteset (spriteset_semaphore_block_green, "gfx/semaphores_block.png") {
     template_semaphore_signals()
 }
 spriteset (spriteset_semaphore_block_red, "gfx/semaphores_block.png") {
-    template_semaphore_signals()
+    template_semaphore_signals2()
 }
 spriteset (spriteset_semaphore_block_combo_green, "gfx/semaphores_block_combo.png") {
     template_semaphore_signals()
 }
 spriteset (spriteset_semaphore_block_combo_red, "gfx/semaphores_block_combo.png") {
-    template_semaphore_signals()
+    template_semaphore_signals2()
 }
 spriteset (spriteset_semaphore_block_entry_green, "gfx/semaphores_block_entry.png") {
     template_semaphore_signals()
 }
 spriteset (spriteset_semaphore_block_entry_red, "gfx/semaphores_block_entry.png") {
-    template_semaphore_signals()
+    template_semaphore_signals2()
 }
 spriteset (spriteset_semaphore_block_exit_green, "gfx/semaphores_block_exit.png") {
     template_semaphore_signals()
 }
 spriteset (spriteset_semaphore_block_exit_red, "gfx/semaphores_block_exit.png") {
-    template_semaphore_signals()
+    template_semaphore_signals2()
 }
 spriteset (spriteset_semaphore_path_oneway_green, "gfx/semaphores_path_oneway.png") {
     template_semaphore_signals()
 }
 spriteset (spriteset_semaphore_path_oneway_red, "gfx/semaphores_path_oneway.png") {
-    template_semaphore_signals()
+    template_semaphore_signals2()
 }
 spriteset (spriteset_semaphore_path_twoway_green, "gfx/semaphores_path_twoway.png") {
     template_semaphore_signals()
 }
 spriteset (spriteset_semaphore_path_twoway_red, "gfx/semaphores_path_twoway.png") {
-    template_semaphore_signals()
+    template_semaphore_signals2()
 }
 
 //Light signals
@@ -293,14 +236,6 @@ template template_light_signals() {
     [  150, 0, 20, 30, -10, -30] //w
     [  180, 0, 20, 30, -10, -28] //s
     [  210, 0, 20, 30, -10, -28] //n
-    [   0 ,40, 20, 30, -10, -30] //sw
-    [   30,40, 20, 30, -10, -30] //ne
-    [   60,40, 20, 30, -10, -30] //nw
-    [   90,40, 20, 30, -10, -30] //se
-    [  120,40, 20, 30, -10, -30] //e
-    [  150,40, 20, 30, -10, -30] //w
-    [  180,40, 20, 30, -10, -28] //s
-    [  210,40, 20, 30, -10, -28] //n
 }
 
 template template_light_signals2() {
@@ -312,16 +247,7 @@ template template_light_signals2() {
     [  150,40, 20, 30, -10, -30] //w
     [  180,40, 20, 30, -10, -28] //s
     [  210,40, 20, 30, -10, -28] //n
-	[   0 , 0, 20, 30, -10, -30] //sw
-    [   30, 0, 20, 30, -10, -30] //ne
-    [   60, 0, 20, 30, -10, -30] //nw
-    [   90, 0, 20, 30, -10, -30] //se
-    [  120, 0, 20, 30, -10, -30] //e
-    [  150, 0, 20, 30, -10, -30] //w
-    [  180, 0, 20, 30, -10, -28] //s
-    [  210, 0, 20, 30, -10, -28] //n
 }
-
 
 spriteset (spriteset_signals_block_green, "gfx/signals_block.png") {
     template_light_signals()
@@ -495,7 +421,7 @@ railtypetable {
 
 //*Vehicle spritesets
 
-spriteset(vehicle1_empty, "gfx/vehicle1.png") {
+template tmpl_vehchair() {
 	[ 0, 	0, 		8	, 12,	-4,-25]
 	[ 10,   0, 		8	, 12,	-4,-24]
 	[ 20, 	0, 		8	, 12,	 4,-22]
@@ -504,18 +430,37 @@ spriteset(vehicle1_empty, "gfx/vehicle1.png") {
 	[ 50, 	0, 		8	, 12,  -12,-18]
 	[ 60,	0, 		8	, 12,  -12,-22]
 	[ 70,	0, 		8	, 12,	-5,-25]
+}
+
+template tmpl_vehgondola() {
+	[ 1, 	1, 		 8, 24,    	 -3, -22]
+	[ 10,   1, 		22, 20, 	-14, -22]
+	[ 33, 	1, 		32, 16, 	-12, -22]
+	[ 66, 	1, 		22, 20, 	-6 , -22]
+	[ 89, 	1, 		 8, 24,	 	 -3, -22]
+	[ 98, 	1, 		22, 20, 	-18, -20]
+	[ 121,	1, 		32, 16, 	-20, -22]
+	[ 154,	1, 		22, 20, 	-10, -24]
+}
+
+template tmpl_vehgondolagui() {
+	[ 1, 	1, 		 8, 24,    	 -3, -7]
+	[ 10,   1, 		22, 20, 	-14, -7]
+	[ 33, 	1, 		32, 16, 	-16, -7]
+	[ 66, 	1, 		22, 20, 	-14, -7]
+	[ 89, 	1, 		 8, 24,	 	 -3, -7]
+	[ 98, 	1, 		22, 20, 	-14, -7]
+	[ 121,	1, 		32, 16, 	-16, -7]
+	[ 154,	1, 		22, 20, 	-14, -7]
 	}
+
+spriteset(vehicle1_empty, "gfx/vehicle1.png") {
+tmpl_vehchair()
+}
 	
 spriteset(vehicle1_full, "gfx/vehicle1full.png") {
-	[ 0, 	0, 		8	, 12,	-4,-25]
-	[ 10,   0, 		8	, 12,	-4,-24]
-	[ 20, 	0, 		8	, 12,	 4,-22]
-	[ 30, 	0, 		8	, 12,	 5,-20]
-	[ 40, 	0, 		8	, 12,	-4,-22]
-	[ 50, 	0, 		8	, 12,  -12,-18]
-	[ 60,	0, 		8	, 12,  -12,-22]
-	[ 70,	0, 		8	, 12,	-5,-25]
-	}
+tmpl_vehchair()
+}
 	
 spriteset(vehicle1_gui, "gfx/vehicle1.png") {
 	[ 0, 	0, 		8	, 12,	-12, -4]
@@ -526,102 +471,62 @@ spriteset(vehicle1_gui, "gfx/vehicle1.png") {
 	[ 50, 	0, 		8	, 12,	-12, -4]
 	[ 60,	0, 		8	, 12,	-12, -4]
 	[ 70,	0, 		8	, 12,	-12, -4]
-	}
+}
 
 spriteset(vehicle2_set, "gfx/vehicle2.png") {
-	[ 1, 	1, 		 8, 24,    	 -3, -22]
-	[ 10,   1, 		22, 20, 	-14, -22]
-	[ 33, 	1, 		32, 16, 	-12, -22]
-	[ 66, 	1, 		22, 20, 	-6 , -22]
-	[ 89, 	1, 		 8, 24,	 	 -3, -22]
-	[ 98, 	1, 		22, 20, 	-18, -20]
-	[ 121,	1, 		32, 16, 	-20, -22]
-	[ 154,	1, 		22, 20, 	-10, -24]
-	}
+tmpl_vehgondola()
+}
 
 spriteset(vehicle2_gui, "gfx/vehicle2.png") {
-	[ 1, 	1, 		 8, 24,    	 -3, -7]
-	[ 10,   1, 		22, 20, 	-14, -7]
-	[ 33, 	1, 		32, 16, 	-16, -7]
-	[ 66, 	1, 		22, 20, 	-14, -7]
-	[ 89, 	1, 		 8, 24,	 	 -3, -7]
-	[ 98, 	1, 		22, 20, 	-14, -7]
-	[ 121,	1, 		32, 16, 	-16, -7]
-	[ 154,	1, 		22, 20, 	-14, -7]
-	}
+tmpl_vehgondolagui()
+}
 	
 spriteset(vehicle3_set, "gfx/vehicle3.png") {
-	[ 1, 	1, 		 8, 24,    	 -3, -22]
-	[ 10,   1, 		22, 20, 	-14, -22]
-	[ 33, 	1, 		32, 16, 	-12, -22]
-	[ 66, 	1, 		22, 20, 	-6 , -22]
-	[ 89, 	1, 		 8, 24,	 	 -3, -22]
-	[ 98, 	1, 		22, 20, 	-18, -20]
-	[ 121,	1, 		32, 16, 	-20, -22]
-	[ 154,	1, 		22, 20, 	-10, -24]
-	}
+tmpl_vehgondola()
+}
 
 spriteset(vehicle3_gui, "gfx/vehicle3.png") {
-	[ 1, 	1, 		 8, 24,    	 -3, -7]
-	[ 10,   1, 		22, 20, 	-14, -7]
-	[ 33, 	1, 		32, 16, 	-16, -7]
-	[ 66, 	1, 		22, 20, 	-14, -7]
-	[ 89, 	1, 		 8, 24,	 	 -3, -7]
-	[ 98, 	1, 		22, 20, 	-14, -7]
-	[ 121,	1, 		32, 16, 	-16, -7]
-	[ 154,	1, 		22, 20, 	-14, -7]
-	}
+tmpl_vehgondolagui()
+}
 	
 spriteset(vehicle4_set, "gfx/vehicle4.png") {
-	[ 1, 	1, 		 8, 24,    	 -3, -22]
-	[ 10,   1, 		22, 20, 	-14, -22]
-	[ 33, 	1, 		32, 16, 	-12, -22]
-	[ 66, 	1, 		22, 20, 	-6 , -22]
-	[ 89, 	1, 		 8, 24,	 	 -3, -22]
-	[ 98, 	1, 		22, 20, 	-18, -20]
-	[ 121,	1, 		32, 16, 	-20, -22]
-	[ 154,	1, 		22, 20, 	-10, -24]
-	}
+tmpl_vehgondola()
+}
 
 spriteset(vehicle4_gui, "gfx/vehicle4.png") {
-	[ 1, 	1, 		 8, 24,    	 -3, -7]
-	[ 10,   1, 		22, 20, 	-14, -7]
-	[ 33, 	1, 		32, 16, 	-16, -7]
-	[ 66, 	1, 		22, 20, 	-14, -7]
-	[ 89, 	1, 		 8, 24,	 	 -3, -7]
-	[ 98, 	1, 		22, 20, 	-14, -7]
-	[ 121,	1, 		32, 16, 	-16, -7]
-	[ 154,	1, 		22, 20, 	-14, -7]
-	}
+tmpl_vehgondolagui()
+}
 
 spriteset(vehicle5_set, "gfx/vehicle5.png") {
-	[ 1, 	1, 		 8, 24,    	 -3, -22]
-	[ 10,   1, 		22, 20, 	-14, -22]
-	[ 33, 	1, 		32, 16, 	-12, -22]
-	[ 66, 	1, 		22, 20, 	-6 , -22]
-	[ 89, 	1, 		 8, 24,	 	 -3, -22]
-	[ 98, 	1, 		22, 20, 	-18, -20]
-	[ 121,	1, 		32, 16, 	-20, -22]
-	[ 154,	1, 		22, 20, 	-10, -24]
-	}
+tmpl_vehgondola()
+}
 
 spriteset(vehicle5_gui, "gfx/vehicle5.png") {
-	[ 1, 	1, 		 8, 24,    	 -3, -7]
-	[ 10,   1, 		22, 20, 	-14, -7]
-	[ 33, 	1, 		32, 16, 	-16, -7]
-	[ 66, 	1, 		22, 20, 	-14, -7]
-	[ 89, 	1, 		 8, 24,	 	 -3, -7]
-	[ 98, 	1, 		22, 20, 	-14, -7]
-	[ 121,	1, 		32, 16, 	-16, -7]
-	[ 154,	1, 		22, 20, 	-14, -7]
-	}
+tmpl_vehgondolagui()
+}
 
+spriteset(vehicle6_empty, "gfx/vehicle6.png") {
+tmpl_vehgondola()
+}
+
+spriteset(vehicle6_full, "gfx/vehicle6full.png") {
+tmpl_vehgondola()
+}
+
+spriteset(vehicle6_gui, "gfx/vehicle6.png") {
+tmpl_vehgondolagui()
+}
 
 //
 
 spritegroup vehicle1_set {
     loading: [vehicle1_empty, vehicle1_full];
 	loaded:  [vehicle1_empty, vehicle1_full];
+}
+
+spritegroup vehicle6_set {
+    loading: [vehicle6_empty, vehicle6_full];
+	loaded:  [vehicle6_empty, vehicle6_full];
 }
 
 //
@@ -671,6 +576,15 @@ switch(FEAT_TRAINS,SELF,vehicle5_switch,getbits(extra_callback_info1, 0, 8)) {
 	vehicle5_set;
 	}
 
+switch(FEAT_TRAINS,SELF,vehicle6_switch,getbits(extra_callback_info1, 0, 8)) {
+	0x10: vehicle6_gui; //depot gui
+	0x11: vehicle6_gui; //vehicle details
+	0x12: vehicle6_gui; //vehicle list
+	0x20: vehicle6_gui; //purchase list
+	0x21: vehicle6_gui; //preview gui
+	vehicle6_set;
+	}
+
 switch(FEAT_TRAINS, SELF, sndstart, getbits(extra_callback_info1, 0, 8)) {
 	SOUND_EVENT_START: return SOUND_MAGLEV;
 	return CB_RESULT_NO_SOUND;
@@ -689,8 +603,8 @@ item(FEAT_TRAINS, veh_1) {
         refittable_cargo_classes:     	bitmask(CC_PASSENGERS);
         non_refittable_cargo_classes: 	bitmask();
         loading_speed:                	30; 
-        cost_factor:                  	10;
-        running_cost_factor:          	100;
+        cost_factor:                  	3;
+        running_cost_factor:          	10;
         sprite_id:                    	SPRITE_ID_NEW_TRAIN;
         speed:                        	19 km/h;
         misc_flags:                   	bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_NO_BREAKDOWN_SMOKE);
@@ -701,7 +615,7 @@ item(FEAT_TRAINS, veh_1) {
         running_cost_base:            	RUNNING_COST_ELECTRIC;
         dual_headed:                  	0;
         cargo_capacity:               	3;
-        weight:                       	144 ton;
+        weight:                       	14 ton;
         ai_engine_rank:               	0;
         engine_class:                 	ENGINE_CLASS_ELECTRIC;
         extra_power_per_wagon:        	0 kW;
@@ -729,8 +643,8 @@ item(FEAT_TRAINS, veh_2) {
         refittable_cargo_classes:     	bitmask(CC_PASSENGERS);
         non_refittable_cargo_classes: 	bitmask();
         loading_speed:                	30; 
-        cost_factor:                  	45;
-        running_cost_factor:          	100;
+        cost_factor:                  	5;
+        running_cost_factor:          	10;
         sprite_id:                    	SPRITE_ID_NEW_TRAIN;
         speed:                        	19 km/h;
         misc_flags:                   	bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_NO_BREAKDOWN_SMOKE);
@@ -741,7 +655,7 @@ item(FEAT_TRAINS, veh_2) {
         running_cost_base:            	RUNNING_COST_ELECTRIC;
         dual_headed:                  	0;
         cargo_capacity:               	6;
-        weight:                       	144 ton;
+        weight:                       	14 ton;
         ai_engine_rank:               	0;
         engine_class:                 	ENGINE_CLASS_ELECTRIC;
         extra_power_per_wagon:        	0 kW;
@@ -769,8 +683,8 @@ item(FEAT_TRAINS, veh_3) {
         refittable_cargo_classes:     	bitmask(CC_PASSENGERS);
         non_refittable_cargo_classes: 	bitmask();
         loading_speed:                	30; 
-        cost_factor:                  	45;
-        running_cost_factor:          	100;
+        cost_factor:                  	7;
+        running_cost_factor:          	10;
         sprite_id:                    	SPRITE_ID_NEW_TRAIN;
         speed:                        	19 km/h;
         misc_flags:                   	bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_NO_BREAKDOWN_SMOKE);
@@ -781,7 +695,7 @@ item(FEAT_TRAINS, veh_3) {
         running_cost_base:            	RUNNING_COST_ELECTRIC;
         dual_headed:                  	0;
         cargo_capacity:               	10;
-        weight:                       	144 ton;
+        weight:                       	14 ton;
         ai_engine_rank:               	0;
         engine_class:                 	ENGINE_CLASS_ELECTRIC;
         extra_power_per_wagon:        	0 kW;
@@ -809,8 +723,8 @@ item(FEAT_TRAINS, veh_4) {
         refittable_cargo_classes:     	bitmask(CC_PASSENGERS);
         non_refittable_cargo_classes: 	bitmask();
         loading_speed:                	30; 
-        cost_factor:                  	45;
-        running_cost_factor:          	100;
+        cost_factor:                  	6;
+        running_cost_factor:          	10;
         sprite_id:                    	SPRITE_ID_NEW_TRAIN;
         speed:                        	31 km/h;
         misc_flags:                   	bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_NO_BREAKDOWN_SMOKE);
@@ -821,7 +735,7 @@ item(FEAT_TRAINS, veh_4) {
         running_cost_base:            	RUNNING_COST_ELECTRIC;
         dual_headed:                  	0;
         cargo_capacity:               	8;
-        weight:                       	144 ton;
+        weight:                       	14 ton;
         ai_engine_rank:               	0;
         engine_class:                 	ENGINE_CLASS_ELECTRIC;
         extra_power_per_wagon:        	0 kW;
@@ -849,8 +763,8 @@ item(FEAT_TRAINS, veh_5) {
         refittable_cargo_classes:     	bitmask(CC_PASSENGERS);
         non_refittable_cargo_classes: 	bitmask();
         loading_speed:                	30; 
-        cost_factor:                  	45;
-        running_cost_factor:          	100;
+        cost_factor:                  	8;
+        running_cost_factor:          	10;
         sprite_id:                    	SPRITE_ID_NEW_TRAIN;
         speed:                        	31 km/h;
         misc_flags:                   	bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_NO_BREAKDOWN_SMOKE);
@@ -861,7 +775,7 @@ item(FEAT_TRAINS, veh_5) {
         running_cost_base:            	RUNNING_COST_ELECTRIC;
         dual_headed:                  	0;
         cargo_capacity:               	15;
-        weight:                       	144 ton;
+        weight:                       	14 ton;
         ai_engine_rank:               	0;
         engine_class:                 	ENGINE_CLASS_ELECTRIC;
         extra_power_per_wagon:        	0 kW;
@@ -875,5 +789,107 @@ item(FEAT_TRAINS, veh_5) {
     graphics {
         default:                      	vehicle5_switch;
 		sound_effect:					sndstart;
+    }
+}
+
+item(FEAT_TRAINS, veh_6) {
+    property {
+        name:                         	string(STR_VEH6);
+        climates_available:           	ALL_CLIMATES; 
+        introduction_date:            	date(1930, 1, 1);
+        model_life:                   	VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 	30;
+        reliability_decay:            	20;
+        refittable_cargo_classes:     	bitmask(CC_BULK,CC_EXPRESS);
+        non_refittable_cargo_classes: 	bitmask();
+        loading_speed:                	30; 
+        cost_factor:                  	5;
+        running_cost_factor:          	10;
+        sprite_id:                    	SPRITE_ID_NEW_TRAIN;
+        speed:                        	19 km/h;
+        misc_flags:                   	bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_NO_BREAKDOWN_SMOKE);
+        refit_cost:                   	0;
+        track_type:                   	SKIL;
+        ai_special_flag:              	AI_FLAG_PASSENGER;
+        power:                        	1260 kW;
+        running_cost_base:            	RUNNING_COST_ELECTRIC;
+        dual_headed:                  	0;
+        cargo_capacity:               	30;
+        weight:                       	14 ton;
+        ai_engine_rank:               	0;
+        engine_class:                 	ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        	0 kW;
+        tractive_effort_coefficient:  	0.3 / 3;
+        air_drag_coefficient:         	0.06;
+        visual_effect_and_powered:    	VISUAL_EFFECT_DISABLE;
+        extra_weight_per_wagon:       	0 ton;
+        bitmask_vehicle_info:         	0;
+		length:							6;
+    }
+    graphics {
+        default:                      	vehicle6_switch;
+		sound_effect:					sndstart;
+    }
+}
+
+//////////////////////
+
+spriteset (tree, "gfx/tree.png") {
+    [ 0, 0, 26,32, -12, -14]
+}
+
+spritelayout spritelayout_tree {
+	ground {
+       sprite: GROUNDSPRITE_NORMAL;
+    }
+    building {
+        sprite: tree(0);
+        xextent: 0;
+        yextent: 0;
+        zextent: 0;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+    }
+}
+
+spritelayout spritelayout_tree_snow {
+	ground {
+       sprite: GROUNDSPRITE_SNOW;
+    }
+    building {
+        sprite: tree(0);
+        xextent: 0;
+        yextent: 0;
+        zextent: 0;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+    }
+}
+
+switch (FEAT_OBJECTS, SELF, switch_tree, terrain_type) {
+	TILETYPE_SNOW: spritelayout_tree_snow;
+	spritelayout_tree;
+}
+
+item (FEAT_OBJECTS, item_tree) {
+    property {
+        class:                  "GOND";
+        classname:              string(STR_GONDO);
+        name:                   string(STR_TREE);
+        climates_available:     ALL_CLIMATES;
+        size:                   [1,1];
+        build_cost_multiplier:  2;
+        remove_cost_multiplier: 8;
+        introduction_date:      date(0,1,1);
+        end_of_life_date:       0xFFFFFFFF;
+        object_flags:           bitmask();
+        height:                 4;
+        num_views:              1;
+    }
+    graphics {
+		default: 			switch_tree;
+        additional_text:    string(STR_TREE_PURCHASE);
     }
 }

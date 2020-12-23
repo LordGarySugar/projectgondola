@@ -21,6 +21,11 @@ STR_VEH2			:GDM Miller T-50 Gondola
 STR_VEH3			:GDM Miller T-100 Gondola
 STR_VEH4			:Karvertech Pendelbahn 30
 STR_VEH5			:Karvertech Pendelbahn 50
+STR_VEH6			:Coal Cable Car
 
+#Tree
+STR_GONDO			:Project Gondola
+STR_TREE			:Christmas Tree
+STR_TREE_PURCHASE	:Merry Christmas!
 
 
