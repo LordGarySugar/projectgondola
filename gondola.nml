@@ -604,7 +604,7 @@ item(FEAT_TRAINS, veh_1) {
         non_refittable_cargo_classes: 	bitmask();
         loading_speed:                	30; 
         cost_factor:                  	3;
-        running_cost_factor:          	10;
+        running_cost_factor:          	2;
         sprite_id:                    	SPRITE_ID_NEW_TRAIN;
         speed:                        	19 km/h;
         misc_flags:                   	bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_NO_BREAKDOWN_SMOKE);
@@ -644,7 +644,7 @@ item(FEAT_TRAINS, veh_2) {
         non_refittable_cargo_classes: 	bitmask();
         loading_speed:                	30; 
         cost_factor:                  	5;
-        running_cost_factor:          	10;
+        running_cost_factor:          	4;
         sprite_id:                    	SPRITE_ID_NEW_TRAIN;
         speed:                        	19 km/h;
         misc_flags:                   	bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_NO_BREAKDOWN_SMOKE);
@@ -684,7 +684,7 @@ item(FEAT_TRAINS, veh_3) {
         non_refittable_cargo_classes: 	bitmask();
         loading_speed:                	30; 
         cost_factor:                  	7;
-        running_cost_factor:          	10;
+        running_cost_factor:          	6.6;
         sprite_id:                    	SPRITE_ID_NEW_TRAIN;
         speed:                        	19 km/h;
         misc_flags:                   	bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_NO_BREAKDOWN_SMOKE);
@@ -724,7 +724,7 @@ item(FEAT_TRAINS, veh_4) {
         non_refittable_cargo_classes: 	bitmask();
         loading_speed:                	30; 
         cost_factor:                  	6;
-        running_cost_factor:          	10;
+        running_cost_factor:          	5;
         sprite_id:                    	SPRITE_ID_NEW_TRAIN;
         speed:                        	31 km/h;
         misc_flags:                   	bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_NO_BREAKDOWN_SMOKE);
